@@ -40,7 +40,7 @@ public struct SVG: DocumentFormat {
 
 public extension SVG {
     /// The root context of an SVG document.
-    enum RootContext: SVGRootContext {}
+    enum RootContext: SVGContext {}
     /// The context within an SVG document's `<svg>` declaration.
     enum DeclarationContext {}
     /// The user-facing root context of an SVG document.
@@ -49,9 +49,9 @@ public extension SVG {
 
 /// Protocol adopted by all contexts that are at the root level of
 /// an SVG-based document format.
-public protocol SVGRootContext: XMLRootContext {}
+public protocol SVGContext: XMLRootContext {}
 
-extension Element where Context: SVGRootContext {
+extension Element where Context: SVGContext {
     static func svg(
         svgAttrs: [Attribute<SVG.DeclarationContext>],
         _ nodes: [Node<SVG.DocumentContext>]
