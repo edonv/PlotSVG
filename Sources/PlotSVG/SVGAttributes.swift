@@ -8,11 +8,6 @@
 import Foundation
 import Plot
 
-@available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *)
-internal let SVGNumberFormat = FloatingPointFormatStyle<Double>()
-    .grouping(.never)
-    .precision(.fractionLength(0...4))
-
 public extension Attribute where Context == SVG.DeclarationContext {
     static func width(_ width: SVGLength) -> Attribute {
         Attribute(
