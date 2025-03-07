@@ -17,11 +17,7 @@ public struct SVGLength: Hashable {
     }
     
     public var rawValue: String {
-        if #available(macOS 12.0, iOS 15.0, tvOS 15.0, watchOS 8.0, *) {
-            "\(length.formatted(SVGNumberFormat))\(unit.rawValue)"
-        } else {
-            "\(length)\(unit.rawValue)"
-        }
+        "\(formatNumber(length))\(unit.rawValue)"
     }
     
     public enum UnitType: String, Hashable {
