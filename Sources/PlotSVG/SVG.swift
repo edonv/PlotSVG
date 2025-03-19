@@ -26,6 +26,15 @@ public struct SVG: DocumentFormat {
         )
     }
     
+    public init(
+        _ nodes: [Node<SVG.DocumentContext>]
+    ) {
+        document = Document<SVG>.custom(
+            .xmlHeader(),
+            .svg(.group(nodes))
+        )
+    }
+    
     public func render() -> String {
         self.document.render()
     }
