@@ -50,3 +50,32 @@ public extension SVG {
 /// Protocol adopted by all contexts that are at the root level of
 /// an SVG-based document format.
 public protocol SVGContext {}
+
+// MARK: - SVG Spec Category Contexts
+
+/// An element which can contain elements in the `animation` category.
+public protocol SVGAnimatableContext: SVGContext {}
+
+/// Context shared among all SVG elements belonging to the `shape` category (`circle`, `ellipse`, `line`, `path`, `polygon`, `polyline` and `rect`).
+public protocol SVGShapeContext: SVGAnimatableContext, SVGGraphicsContext {}
+
+/// An element which can have graphics elements and other container elements as child elements.
+///
+/// Specifically: `a`, `defs`, `glyph`, `g`, `marker`, `mask`, `missing-glyph`, `pattern`, `svg`, `switch` and `symbol`.
+public protocol SVGContainerContext: SVGDescribableContext {}
+
+/// One of the element types that can cause graphics to be drawn onto the target canvas.
+///
+/// Specifically: `circle`, `ellipse`, `image`, `line`, `path`, `polygon`, `polyline`, `rect`, `text` and `use`.
+public protocol SVGGraphicsContext: SVGDescribableContext {}
+
+/// A text content element is an SVG element that causes a text string to be rendered onto the canvas: `altGlyph`, `textPath`, `text`, and `tspan`.
+public protocol SVGTextContentContext: SVGFillableContext, SVGStrokableContext {}
+
+/// A text content child element is a ``SVGTextContentContext`` element that is allowed as a descendant of another ``SVGTextContentContext`` element: `altGlyph`, `textPath`, and `tspan`.
+public protocol SVGTextContentChildContext: SVGTextContentContext {}
+
+/// The structural elements are those which define the primary structure of an SVG document.
+///
+/// Specifically, the following elements are structural elements: `defs`, `g`, `svg`, `symbol` and `use`.
+public protocol SVGStructuralContext: SVGDescribableContext {}
