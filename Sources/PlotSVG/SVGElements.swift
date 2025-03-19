@@ -39,13 +39,16 @@ public extension Element where Context == SVG.RootContext {
     /// will automatically add this element at the root of all SVG
     /// documents that are created using the `SVG` type's initializer.
     /// - parameter nodes: The element's attributes and child elements.
-    static func svg(_ nodes: Node<SVG.DocumentContext>...) -> Element {
+    static func svg(
+        attributes: [Attribute<SVG.DocumentContext>] = [],
+        _ nodes: Node<SVG.DocumentContext>...
+    ) -> Element {
         Element.named(
             "svg",
             nodes: [
                 .attribute(named: "xmlns", value: "http://www.w3.org/2000/svg"),
                 .attribute(named: "version", value: "1.1"),
-            ] + nodes.map {
+            ] + [attributes.map(\.node) + nodes].map {
                 $0.node.convertToNode(withContext: Any.self)
             }
         )
