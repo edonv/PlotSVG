@@ -43,12 +43,18 @@ public extension Element where Context == SVG.RootContext {
         attributes: [Attribute<SVG.DocumentContext>] = [],
         _ nodes: Node<SVG.DocumentContext>...
     ) -> Element {
-        Element.named(
+        let attrs: [Attribute<Any>] = [
+            .attribute(named: "xmlns", value: "http://www.w3.org/2000/svg"),
+            .attribute(named: "version", value: "1.1"),
+        ]
+        
+        return .named(
             "svg",
-            nodes: [
-                .attribute(named: "xmlns", value: "http://www.w3.org/2000/svg"),
-                .attribute(named: "version", value: "1.1"),
-            ] + [attributes.map(\.node) + nodes].map {
+            nodes: attrs.map(\.node)
+            + attributes.map {
+                $0.node.convertToNode(withContext: Any.self)
+            }
+            + nodes.map {
                 $0.node.convertToNode(withContext: Any.self)
             }
         )
