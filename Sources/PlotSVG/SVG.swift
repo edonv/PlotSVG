@@ -42,6 +42,30 @@ public extension SVG {
     enum DeclarationContext {}
     /// The user-facing root context of an SVG document. (i.e. inside the root `<svg>` element)
     enum DocumentContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    
+    /// Used for nested `<svg>` elements.
+    enum SVGElementContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    
+    enum AnchorContext: SVGContainerContext {}
+    enum CircleContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
+    enum DefsContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    enum EllipseContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
+    enum GlyphContext: SVGContainerContext {}
+    enum GroupContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    enum ImageContext: SVGGraphicsContext {}
+    enum LineContext: SVGShapeContext, SVGStrokableContext {}
+    enum MarkerContext: SVGContainerContext {}
+    enum MaskContext: SVGContainerContext {}
+    enum MissingGlyphContext: SVGContainerContext {}
+    enum PathContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
+    enum PatternContext: SVGContainerContext {}
+    enum PolygonContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
+    enum PolylineContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
+    enum RectContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
+    enum SwitchContext: SVGContainerContext {}
+    enum SymbolContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    enum TextContext: SVGGraphicsContext, SVGAnimatableContext, SVGDescribableContext {}
+    enum UseContext: SVGGraphicsContext, SVGStructuralContext {}
 }
 
 /// Protocol adopted by all contexts that are at the root level of
