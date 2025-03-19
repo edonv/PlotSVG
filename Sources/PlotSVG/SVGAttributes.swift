@@ -50,15 +50,16 @@ public extension Attribute where Context == SVG.DocumentContext {
         )
     }
     
-    static func viewBox(
-        minX: Double = 0,
-        minY: Double = 0,
-        width: Double,
-        height: Double
+    static func viewBox<F: BinaryFloatingPoint>(
+        minX: F = 0,
+        minY: F = 0,
+        width: F,
+        height: F
     ) -> Attribute {
         Attribute(
             name: "viewBox",
             value: [minX, minY, width, height]
+                .map { Double($0) }
                 .map { String($0) }
                 .joined(separator: " ")
         )
