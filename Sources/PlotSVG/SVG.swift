@@ -76,3 +76,22 @@ public protocol SVGTextContentChildContext: SVGTextContentContext {}
 ///
 /// Specifically, the following elements are structural elements: `defs`, `g`, `svg`, `symbol` and `use`.
 public protocol SVGStructuralContext: SVGDescribableContext {}
+
+// MARK: - Extension Contexts
+
+/// Context shared among all SVG elements that can be styled by external CSS through the `class` attribute`.
+public protocol SVGClassableContext: SVGContext {}
+
+/// Context shared among all SVG elements that can be styled using inline CSS through the `style` attribute`.
+public protocol SVGStylableContext: SVGContext {}
+
+/// Context shared among all SVG elements that can use the `fill` attribute.
+public protocol SVGFillableContext: SVGContext {}
+
+/// Context shared among all SVG elements that can use the `stroke` attribute.
+public protocol SVGStrokableContext: SVGFillableContext {}
+
+/// Same as ``SVGStructuralContext``, except without `use`.
+///
+/// This is used for elements that can have normal elements in them, which `use` cannot.
+public protocol SVGStructuralWithContentContext: SVGStructuralContext {}
