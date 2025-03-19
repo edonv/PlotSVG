@@ -11,12 +11,12 @@ import Plot
 public struct SVG: DocumentFormat {
     private let document: Document<SVG>
     
-    /// Create an HTML document with a collection of nodes that make
-    /// up its elements and attributes. Start by specifying its root
-    /// nodes, such as `.head()` and `.body()`, and then create any
-    /// sort of hierarchy of elements and attributes from there.
-    /// - parameter nodes: The root nodes of the document, which will
-    /// be placed inside of an `<html>` element.
+    // Create an HTML document with a collection of nodes that make
+    // up its elements and attributes. Start by specifying its root
+    // nodes, such as `.head()` and `.body()`, and then create any
+    // sort of hierarchy of elements and attributes from there.
+    // - parameter nodes: The root nodes of the document, which will
+    // be placed inside of an `<html>` element.
     public init(
         _ nodes: Node<SVG.DocumentContext>...
     ) {
