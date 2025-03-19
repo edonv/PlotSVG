@@ -8,7 +8,7 @@
 import Foundation
 import Plot
 
-public extension Attribute where Context == SVG.DeclarationContext {
+public extension Attribute where Context == SVG.DocumentContext {
     static func width(_ width: SVGLength) -> Attribute {
         Attribute(
             name: "width",
