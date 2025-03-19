@@ -27,12 +27,24 @@ public struct SVGColor {
         return .init(rawValue: "rgb(\(red),\(green),\(blue))")
     }
     
-    public static func rgbPercent<F: BinaryFloatingPoint>(
+    public static func rgb(
+        red: SVGPercentage,
+        green: SVGPercentage,
+        blue: SVGPercentage
+    ) -> SVGColor {
+        return .init(rawValue: "rgb(\([red, green, blue].map(\.rawValue).joined(separator: ",")))")
+    }
+    
+    public static func rgb<F: BinaryFloatingPoint>(
         red: F,
         green: F,
         blue: F
     ) -> SVGColor {
-        return .init(rawValue: "rgb(\([red, green, blue].map { "\(max(min(1, $0), 0) * 100)%" }.joined(separator: ",")))")
+        .rgb(
+            red: .init(value: red),
+            green: .init(value: green),
+            blue: .init(value: blue)
+        )
     }
     
     public static func literal(_ color: String) -> SVGColor {
