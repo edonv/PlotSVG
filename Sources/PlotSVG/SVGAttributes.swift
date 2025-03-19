@@ -9,34 +9,6 @@ import Foundation
 import Plot
 
 public extension Attribute where Context == SVG.DocumentContext {
-    static func width(_ width: SVGLength) -> Attribute {
-        Attribute(
-            name: "width",
-            value: width.rawValue
-        )
-    }
-    
-    static func height(_ height: SVGLength) -> Attribute {
-        Attribute(
-            name: "height",
-            value: height.rawValue
-        )
-    }
-    
-    static func x(_ x: SVGLength) -> Attribute {
-        Attribute(
-            name: "x",
-            value: x.rawValue
-        )
-    }
-    
-    static func y(_ y: SVGLength) -> Attribute {
-        Attribute(
-            name: "y",
-            value: y.rawValue
-        )
-    }
-    
     static func preserveAspectRatio(
         _ option: PreserveAspectRatio.Options,
         meetOrSlice: PreserveAspectRatio.MeetSlice?
@@ -67,34 +39,6 @@ public extension Attribute where Context == SVG.DocumentContext {
 }
 
 public extension Node where Context == SVG.DocumentContext {
-    static func width(_ width: SVGLength) -> Node {
-        .attribute(
-            named: "width",
-            value: width.rawValue
-        )
-    }
-    
-    static func height(_ height: SVGLength) -> Node {
-        .attribute(
-            named: "height",
-            value: height.rawValue
-        )
-    }
-    
-    static func x(_ x: SVGLength) -> Node {
-        .attribute(
-            named: "x",
-            value: x.rawValue
-        )
-    }
-    
-    static func y(_ y: SVGLength) -> Node {
-        .attribute(
-            named: "y",
-            value: y.rawValue
-        )
-    }
-    
     static func preserveAspectRatio(
         _ option: PreserveAspectRatio.Options,
         meetOrSlice: PreserveAspectRatio.MeetSlice?
