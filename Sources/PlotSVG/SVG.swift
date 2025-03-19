@@ -50,23 +50,3 @@ public extension SVG {
 /// Protocol adopted by all contexts that are at the root level of
 /// an SVG-based document format.
 public protocol SVGContext: XMLRootContext {}
-
-extension Element where Context: SVGContext {
-    static func svg(
-        svgAttrs: [Attribute<SVG.DeclarationContext>],
-        _ nodes: [Node<SVG.DocumentContext>]
-    ) -> Element<Context> {
-        Element<Context>.named(
-            "svg",
-            nodes: [
-                .attribute(named: "xmlns", value: "http://www.w3.org/2000/svg"),
-                .attribute(named: "version", value: "1.1"),
-            ] + svgAttrs.map {
-                .attribute(named: $0.name, value: $0.value)
-            }
-            + nodes.map {
-                $0.node.convertToNode(withContext: Any.self)
-            }
-        )
-    }
-}
