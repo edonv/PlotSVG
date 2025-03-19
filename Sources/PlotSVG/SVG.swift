@@ -128,3 +128,9 @@ public protocol SVGStrokableContext: SVGFillableContext {}
 ///
 /// This is used for elements that can have normal elements in them, which `use` cannot.
 public protocol SVGStructuralWithContentContext: SVGStructuralContext {}
+
+/// Context shared among all SVG elements that can use the `x`/`y` attributes.
+public protocol SVGPositionableContext: SVGContext {}
+
+/// Context shared among all SVG elements that can use the `width`/`height` attributes.
+public protocol SVGSizeableContext: SVGContext {}
