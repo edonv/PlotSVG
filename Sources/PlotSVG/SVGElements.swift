@@ -21,12 +21,12 @@ public extension Element where Context == SVG.RootContext {
     /// You typically never have to call this API yourself, since Plot
     /// will automatically add this declaration at the top of all SVG
     /// documents that are created using the `SVG` type's initializer.
-    static func xmlHeader(standlone: Bool? = nil) -> Element {
+    static func xmlHeader(standalone: Bool? = nil) -> Element {
         .xml(
             .version(1.0),
             .init(
                 name: "standalone",
-                value: standlone
+                value: standalone
                     .map { $0 ? "yes" : "no" },
                 ignoreIfValueIsEmpty: true
             )
