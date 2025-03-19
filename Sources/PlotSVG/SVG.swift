@@ -43,8 +43,8 @@ public extension SVG {
     enum RootContext: XMLRootContext {}
     /// The context within an SVG document's `<svg>` declaration.
     enum DeclarationContext {}
-    /// The user-facing root context of an SVG document.
-    enum DocumentContext {}
+    /// The user-facing root context of an SVG document. (i.e. inside the root `<svg>` element)
+    enum DocumentContext: SVGContainerContext, SVGStructuralWithContentContext {}
 }
 
 /// Protocol adopted by all contexts that are at the root level of
