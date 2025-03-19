@@ -64,3 +64,27 @@ public extension Attribute where Context == SVG.DocumentContext {
         )
     }
 }
+
+public extension Node where Context: SVGClassableContext {
+    static func `class`(_ className: String...) -> Node {
+        .attribute(named: "class", value: className.joined(separator: " "))
+    }
+}
+
+public extension Attribute where Context: SVGClassableContext {
+    static func `class`(_ className: String...) -> Attribute {
+        .attribute(named: "class", value: className.joined(separator: " "))
+    }
+}
+
+public extension Node where Context: SVGStylableContext {
+    static func style(_ css: String) -> Node {
+        .attribute(named: "style", value: css)
+    }
+}
+
+public extension Attribute where Context: SVGStylableContext {
+    static func style(_ css: String) -> Attribute {
+        .attribute(named: "style", value: css)
+    }
+}
