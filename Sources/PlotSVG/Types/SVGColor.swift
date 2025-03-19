@@ -32,7 +32,7 @@ public struct SVGColor {
         green: F,
         blue: F
     ) -> SVGColor {
-        return .init(rawValue: "rgb(\([red, green, blue].map { "\(max(min(1, $0), 0))%" }.joined(separator: ",")))")
+        return .init(rawValue: "rgb(\([red, green, blue].map { "\(max(min(1, $0), 0) * 100)%" }.joined(separator: ",")))")
     }
     
     public static func literal(_ color: String) -> SVGColor {
