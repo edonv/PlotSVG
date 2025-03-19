@@ -18,14 +18,11 @@ public struct SVG: DocumentFormat {
     /// - parameter nodes: The root nodes of the document, which will
     /// be placed inside of an `<html>` element.
     public init(
-        svgAttrs: [Attribute<SVG.DeclarationContext>],
-        _ nodes: [Node<SVG.DocumentContext>]
+        _ nodes: Node<SVG.DocumentContext>...
     ) {
         document = Document<SVG>.custom(
-            .xml(
-                .version(1.0)
-            ),
-            .svg(svgAttrs: svgAttrs, nodes)
+            .xmlHeader(),
+            .svg(.group(nodes))
         )
     }
     
