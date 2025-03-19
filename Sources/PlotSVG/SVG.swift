@@ -50,10 +50,10 @@ public extension SVG {
     /// The context within an SVG document's `<svg>` declaration.
     enum DeclarationContext {}
     /// The user-facing root context of an SVG document. (i.e. inside the root `<svg>` element)
-    enum DocumentContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    final class DocumentContext: SVGElementContext {}
     
     /// Used for nested `<svg>` elements.
-    enum SVGElementContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    class SVGElementContext: SVGContainerContext, SVGStructuralWithContentContext {}
     
     enum AnchorContext: SVGContainerContext {}
     enum CircleContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
