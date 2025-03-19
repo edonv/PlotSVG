@@ -53,7 +53,7 @@ public extension SVG {
     final class DocumentContext: SVGElementContext {}
     
     /// Used for nested `<svg>` elements.
-    class SVGElementContext: SVGContainerContext, SVGStructuralWithContentContext {}
+    class SVGElementContext: SVGContainerContext, SVGStructuralWithContentContext, SVGPositionableContext, SVGSizeableContext {}
     
     enum AnchorContext: SVGContainerContext {}
     enum CircleContext: SVGShapeContext, SVGFillableContext, SVGStrokableContext {}
